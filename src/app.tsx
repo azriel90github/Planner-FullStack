@@ -2,16 +2,18 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { CreateTripPages } from "./pages/create-trip";
+import { TripDetailsPage } from "./pages/trip-details";
 
-// Definindo rotas
+// Definindo rotas com react routes
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <CreateTripPages />,
   },
   {
-    path: "/test",
-    element: <div>Hello test!</div>,
+    path: "/trip/:tripId",
+    element: <TripDetailsPage />,
   },
 ]);
 

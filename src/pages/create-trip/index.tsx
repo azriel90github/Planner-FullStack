@@ -1,10 +1,13 @@
 import { ArrowRight, AtSign, Calendar, MapPin, Plus, Settings2, User2, UserRoundPlus, X } from "lucide-react"; // Importando icones da biblioteca lucide-react
 import { FormEvent, useState } from "react"; // Importando FormEvent e useState
+import { useNavigate } from "react-router-dom";
 
-export function App() {
+export function CreateTripPages() {
+  const navigation = useNavigate()
+
   const [isGuestsInputOpen, setIsGuestsInputOpen] = useState(false)
   const [isGuestsModalOpen, setIsGuestsModalOpen] = useState(false)
-  const [isConfirmTriModalOpen, setIsConfirmTriModalOpen] = useState(false)
+  const [isConfirmTripModalOpen, setIsConfirmTripModalOpen] = useState(false)
 
 
 
@@ -25,12 +28,12 @@ export function App() {
     setIsGuestsModalOpen(true)
   }
 
-  function openConfirmTriModal() {
-    setIsConfirmTriModalOpen(true)
+  function openConfirmTripModal() {
+    setIsConfirmTripModalOpen(true)
   }
 
   function closeConfirmTripModal() {
-    setIsConfirmTriModalOpen(false)
+    setIsConfirmTripModalOpen(false)
   }
 
   function closeGuestsModal() {
@@ -63,6 +66,10 @@ export function App() {
     const newEmailList = emailsToInvite.filter(email => email !== emailToRemove)
 
     setEmailsToInvite(newEmailList)
+  }
+
+  function createTrip() {
+    navigation('/trips/123')
   }
 
   return (
@@ -192,7 +199,7 @@ export function App() {
         </div>
       )}
 
-      {isConfirmTriModalOpen && (
+      {isConfirmTripModalOpen && (
                 <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
                 <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
                   <div className="space-y-2">
@@ -229,7 +236,7 @@ export function App() {
                       />
                     </div>
       
-                    <button onClick={openConfirmTriModal} type="submit" className="bg-lime-300 w-full justify-center text-lime-950 rounded-lg px-5 h-11 font-medium flex items-center gap-2 hover:bg-lime-400">
+                    <button onClick={createTrip}  type="submit" className="bg-lime-300 w-full justify-center text-lime-950 rounded-lg px-5 h-11 font-medium flex items-center gap-2 hover:bg-lime-400">
                       Confirmar criação da viagem
                     </button>
                   </form>
