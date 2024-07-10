@@ -1,5 +1,5 @@
-import { ArrowRight, AtSign, Calendar, MapPin, Plus, Settings2, UserRoundPlus, X } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { ArrowRight, AtSign, Calendar, MapPin, Plus, Settings2, UserRoundPlus, X } from "lucide-react"; // Importando icones da biblioteca lucide-react
+import { FormEvent, useState } from "react"; // Importando FormEvent e useState
 
 export function App() {
   const [isGuestsInputOpen, setIsGuestsInputOpen] = useState(false)
