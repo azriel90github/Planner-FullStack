@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react"; // Importando FormEvent e useState
+import { FormEvent, useState } from "react"; 
 import { useNavigate } from "react-router-dom";
 import { InviteGuestsModal } from "./invite-guests-modal";
 import { ConfirmTripModal } from "./confirm-trip-modal";

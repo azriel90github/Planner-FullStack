@@ -3,6 +3,7 @@ import { Button } from "../../../components/button";
 import { useState } from "react";
 import { DateRange, DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
+import { format } from "date-fns";
 
 
 interface DestinationAndDateStepsProps {
@@ -31,7 +32,9 @@ export function DestinationAndDateSteps( {
       return setIsDatePickerOpen(false)
     }
 
-  const displayedDate = eventStarAndEndDates ? 'Data' : null
+  const displayedDate = eventStarAndEndDates && eventStarAndEndDates.from && eventStarAndEndDates.to
+  ? format(eventStarAndEndDates.from, "d 'de' LLL").concat(' até ').concat(format(eventStarAndEndDates.to, "d 'de' LLL"))
+  : null
 
   return (
     <div className="h-16 bg-zinc-900 px-4 rounded-xl flex items-center shadow-shape gap-3">
@@ -48,9 +51,9 @@ export function DestinationAndDateSteps( {
       <button 
           onClick={openDatePicker}
           disabled={isGuestsInputOpen} 
-          className="flex items-center gap-2 text-left">
+          className="flex items-center gap-2 text-left w-[240px]">
           <Calendar className="size-5 text-zinc-400" />
-        <span className=" text-zinc-400 w-40">
+        <span className=" text-zinc-400 w-40 flex-1">
           {displayedDate || 'Quando?'}
         </span>
       </button>

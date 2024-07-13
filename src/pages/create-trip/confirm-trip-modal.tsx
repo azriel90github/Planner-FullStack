@@ -29,11 +29,11 @@ export function ConfirmTripModal( {
         </p>
       </div>
       
-      <form onClick={createTrip} className="space-y-2.5">
+      <form onSubmit={createTrip} className="space-y-2.5">
         <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
           <User2 className="text-zinc-400 size-5" />
           <input
-            type="email"
+            type="text"
             name="email"
             placeholder="Seu nome completo"
             className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
