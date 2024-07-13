@@ -1,6 +1,9 @@
 import { ArrowRight, Calendar, MapPin, Settings2, X } from "lucide-react";
 import { Button } from "../../../components/button";
 import { useState } from "react";
+import { DateRange, DayPicker } from "react-day-picker";
+import "react-day-picker/dist/style.css";
+
 
 interface DestinationAndDateStepsProps {
   isGuestsInputOpen : boolean
@@ -16,6 +19,9 @@ export function DestinationAndDateSteps( {
 } : DestinationAndDateStepsProps) {
 
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
+  const [eventStarAndEndDates, setEventAndEndDates] = useState<DateRange | undefined>()
+
+
 
     function openDatePicker() {
       return setIsDatePickerOpen(true)
@@ -24,6 +30,8 @@ export function DestinationAndDateSteps( {
     function closeDatePicker() {
       return setIsDatePickerOpen(false)
     }
+
+  const displayedDate = eventStarAndEndDates ? 'Data' : null
 
   return (
     <div className="h-16 bg-zinc-900 px-4 rounded-xl flex items-center shadow-shape gap-3">
@@ -38,16 +46,18 @@ export function DestinationAndDateSteps( {
       </div>
 
       <button 
-          disabled={isGuestsInputOpen} className="flex items-center gap-2 text-left">
+          onClick={openDatePicker}
+          disabled={isGuestsInputOpen} 
+          className="flex items-center gap-2 text-left">
           <Calendar className="size-5 text-zinc-400" />
         <span className=" text-zinc-400 w-40">
-          Quando?
+          {displayedDate || 'Quando?'}
         </span>
       </button>
 
       {isDatePickerOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
-          <div className="w-[240px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
+          <div className="rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <h2 className="font-lg font-semibold">Selecione a Data</h2>
@@ -57,7 +67,7 @@ export function DestinationAndDateSteps( {
               </div>
             </div>
 
-            <h1>Hello World</h1>
+            <DayPicker mode="range" selected={eventStarAndEndDates} onSelect={setEventAndEndDates}/>
           </div>
         </div>
       )}
