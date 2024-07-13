@@ -52,7 +52,7 @@ export function CreateAtivityModal({
             */}
 
     
-            <Button variant="primary">
+            <Button variant="primary" size="full">
               Salvar atividade
             </Button>
           </form>
