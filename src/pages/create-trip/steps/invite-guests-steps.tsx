@@ -10,7 +10,7 @@ interface InviteGuestsStepsProps {
 export function InviteGuestsSteps( {
   openGuestsModal,
   emailsToInvite,
-  openConfirmTripModal
+  openConfirmTripModal,
 } : InviteGuestsStepsProps) {
   return (
     <div className="h-16 bg-zinc-900 px-4 rounded-xl flex items-center shadow-shape gap-3">

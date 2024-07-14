@@ -4,6 +4,8 @@ import { Button } from "../../components/button"
 
 interface ConfirmTripModalProps {
   closeConfirmTripModal : () => void
+  setOwnerName : (name: string) => void /*Conectando com a Backend*/   
+  setOwnerEmail : (email: string) => void /*Conectando com a Backend*/   
   createTrip : (event: FormEvent<HTMLFormElement>) => void
   
 }
@@ -11,6 +13,8 @@ interface ConfirmTripModalProps {
 export function ConfirmTripModal( {
   closeConfirmTripModal,
   createTrip,
+  setOwnerName, /*Conectando com a Backend*/   
+  setOwnerEmail, /*Conectando com a Backend*/   
   
 } : ConfirmTripModalProps) {
   return (
@@ -33,8 +37,9 @@ export function ConfirmTripModal( {
         <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
           <User2 className="text-zinc-400 size-5" />
           <input
+            onChange={event => setOwnerName(event.target.value)} /*Conectando com a Backend*/            
             type="text"
-            name="email"
+            name="text"
             placeholder="Seu nome completo"
             className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
           />
@@ -43,6 +48,7 @@ export function ConfirmTripModal( {
         <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
           <User2 className="text-zinc-400 size-5" />
           <input
+          onChange={event => setOwnerEmail(event.target.value)} /*Conectando com a Backend*/   
             type="email"
             name="email"
             placeholder="Seu e-mail pessoal"
