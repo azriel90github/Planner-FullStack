@@ -20,7 +20,7 @@ export function CreateTripPages() {
   const [destination, setDestination] = useState('')
   const [ownerName, setOwnerName] = useState('')
   const [ownerEmail, setOwnerEmail] = useState('')
-  const [eventStarAndEndDates, setEventAndEndDates] = useState<DateRange | undefined>()
+  const [eventStartAndEndDates, setEventStartAndEndDates] = useState<DateRange | undefined>()
 
   const [emailsToInvite, setEmailsToInvite] = useState([
     'diego@rocketseat.com.br',
@@ -83,7 +83,7 @@ export function CreateTripPages() {
     event.preventDefault()
 
     console.log(destination)
-    console.log(eventStarAndEndDates)
+    console.log(eventStartAndEndDates)
     console.log(ownerName)
     console.log(ownerEmail)
     console.log(emailsToInvite)
@@ -92,7 +92,7 @@ export function CreateTripPages() {
       return
     }
 
-    if (!eventStarAndEndDates?.from || eventStarAndEndDates?.to) {
+    if (!eventStartAndEndDates?.from || eventStartAndEndDates?.to) {
       return
     }
 
@@ -106,8 +106,8 @@ export function CreateTripPages() {
 
     const response = await api.post('/trips', {
       destination,
-      starts_at: eventStarAndEndDates.from,
-      ends_at: eventStarAndEndDates.to,
+      starts_at: eventStartAndEndDates.from,
+      ends_at: eventStartAndEndDates.to,
       emails_to_invite: emailsToInvite,
       owner_name: ownerName,
       owner_email: ownerEmail
@@ -135,8 +135,8 @@ export function CreateTripPages() {
             isGuestsInputOpen={isGuestsInputOpen}
             openGuestsInput={openGuestsInput}
             setDestination={setDestination} /*Conectando com a Backend*/   
-            setEventAndEndDates={setEventAndEndDates} /*Conectando com a Backend*/
-            eventStarAndEndDates={eventStarAndEndDates}
+            setEventStartAndEndDates={setEventStartAndEndDates} /*Conectando com a Backend*/
+            eventStarAndEndDates={eventStartAndEndDates}
           /> 
 
           {isGuestsInputOpen && (

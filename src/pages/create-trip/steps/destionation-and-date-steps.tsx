@@ -12,7 +12,7 @@ interface DestinationAndDateStepsProps {
   closeGuestsInput : () => void
   openGuestsInput : () => void
   setDestination: (destionation: string) => void
-  setEventAndEndDates: (dates: DateRange | undefined) => void
+  setEventStartAndEndDates: (dates: DateRange | undefined) => void
 }
 
 export function DestinationAndDateSteps( {
@@ -20,7 +20,7 @@ export function DestinationAndDateSteps( {
   closeGuestsInput,
   openGuestsInput,
   setDestination, /*Conectando com a Backend*/   
-  setEventAndEndDates, /*Conectando com a Backend*/   
+  setEventStartAndEndDates, /*Conectando com a Backend*/   
   eventStarAndEndDates, /*Conectando com a Backend*/   
 
 } : DestinationAndDateStepsProps) {
@@ -77,7 +77,7 @@ export function DestinationAndDateSteps( {
               </div>
             </div>
 
-            <DayPicker mode="range" selected={eventStarAndEndDates} onSelect={setEventAndEndDates}/>
+            <DayPicker mode="range" selected={eventStarAndEndDates} onSelect={setEventStartAndEndDates}/>
           </div>
         </div>
       )}
