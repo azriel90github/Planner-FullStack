@@ -92,7 +92,7 @@ export function CreateTripPages() {
       return
     }
 
-    if (!eventStartAndEndDates?.from || eventStartAndEndDates?.to) {
+    if (!eventStartAndEndDates?.from || !eventStartAndEndDates?.to) {
       return
     }
 
