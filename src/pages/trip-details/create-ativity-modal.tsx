@@ -1,5 +1,6 @@
 import { Calendar, Tag, X } from "lucide-react"
 import { Button } from "../../components/button"
+import { FormEvent } from "react"
 
 interface CreateAtivityModalProps {
   closeCreateAtivityModal: () => void
@@ -8,6 +9,19 @@ interface CreateAtivityModalProps {
 export function CreateAtivityModal({
   closeCreateAtivityModal
 } : CreateAtivityModalProps) {
+
+    function createAtivity(event: FormEvent<HTMLFormElement>) {
+      event.preventDefault()
+
+      const data = new FormData(event.currentTarget)
+
+      const title = data.get('title')?.toString()
+      const occurs_at = data.get('occurs_at')?.toString()
+
+      console.log({ title, occurs_at })
+
+    }
+
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
         <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
@@ -24,7 +38,7 @@ export function CreateAtivityModal({
             </p>
           </div>
           
-          <form className="space-y-2.5">
+          <form onSubmit={createAtivity} className="space-y-2.5">
             <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
               <Tag className="text-zinc-400 size-5" />
               <input

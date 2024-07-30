@@ -112,7 +112,7 @@ export function CreateTripPages() {
       owner_name: ownerName,
       owner_email: ownerEmail
     })
- 
+
     const { tripId } = response.data
 
     navigate(`/trips/${tripId}`)
