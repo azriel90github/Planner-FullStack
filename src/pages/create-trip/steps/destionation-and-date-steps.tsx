@@ -27,9 +27,6 @@ export function DestinationAndDateSteps( {
 
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
 
-
-
-
     function openDatePicker() {
       return setIsDatePickerOpen(true)
     }

@@ -19,7 +19,7 @@ export function Guests() {
   useEffect(() => {
     api.get(`/trips/${tripId}/participants`).then(response => setParticipants(response.data.participants))
   }, [tripId])
-
+// 
   return (
     <div className="space-y-6">
       <h2 className="fonte-semibold text-xl">Convidados</h2>
