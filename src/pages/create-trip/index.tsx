@@ -2,8 +2,8 @@ import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { InviteGuestsModal } from "./invite-guests-modal";
 import { ConfirmTripModal } from "./confirm-trip-modal";
-import { DestinationAndDateStep } from "./steps/destionation-and-date-steps";
-import { InviteGuestsStep } from "./steps/invite-guests-steps";
+import { DestinationAndDateStep } from "./steps/destination-and-date-step";
+import { InviteGuestsStep } from "./steps/invite-guests-step";
 import { DateRange } from "react-day-picker";
 import { api } from "../../lib/axios";
 
@@ -153,7 +153,7 @@ export function CreateTripPage() {
 
       {isConfirmTripModalOpen && (
         <ConfirmTripModal 
-          closeConfirmTripModal={closeConfirmTripModal} 
+          closeConfirmTripModal={closeConfirmTripModal}
           createTrip={createTrip}
           setOwnerName={setOwnerName}
           setOwnerEmail={setOwnerEmail}

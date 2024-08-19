@@ -1,21 +1,11 @@
-/* Importa as classes base do Tailwind CSS */
 @tailwind base;
-
-/* Importa os componentes pré-construídos do Tailwind CSS */
 @tailwind components;
-
-/* Importa as utilitárias do Tailwind CSS */
 @tailwind utilities;
 
-/* Define um estilo global para todos os elementos: */
 * {
-  /* Define o valor mínimo de largura para 0 */
   min-width: 0;
 }
 
-/* Define um estilo específico para inputs: */
 input {
-  /* Define o esquema de cores para "dark" (modo escuro) */
   color-scheme: dark;
 }
-
