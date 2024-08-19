@@ -1,42 +1,39 @@
-import { ArrowRight, Calendar, MapPin, Settings2, X } from "lucide-react";
+import { MapPin, Calendar, Settings2, ArrowRight, X } from "lucide-react";
 import { Button } from "../../../components/button";
 import { useState } from "react";
 import { DateRange, DayPicker } from "react-day-picker";
-import "react-day-picker/dist/style.css";
+import 'react-day-picker/dist/style.css'
 import { format } from "date-fns";
 
-
-interface DestinationAndDateStepsProps {
-  isGuestsInputOpen : boolean
-  eventStarAndEndDates: DateRange | undefined
-  closeGuestsInput : () => void
-  openGuestsInput : () => void
-  setDestination: (destionation: string) => void
-  setEventStartAndEndDates: (dates: DateRange | undefined) => void
+interface DestinationAndDateStepProps {
+  isGuestsInputOpen: boolean;
+  eventStartAndEndDates: DateRange | undefined;
+  closeGuestsInput: () => void;
+  openGuestsInput: () => void;
+  setDestination: (destination: string) => void;
+  setEventStartAndEndDates: (dates: DateRange | undefined) => void;
 }
 
-export function DestinationAndDateSteps( {
-  isGuestsInputOpen,
+export function DestinationAndDateStep({
   closeGuestsInput,
+  isGuestsInputOpen,
   openGuestsInput,
-  setDestination, /*Conectando com a Backend*/   
-  setEventStartAndEndDates, /*Conectando com a Backend*/   
-  eventStarAndEndDates, /*Conectando com a Backend*/   
-
-} : DestinationAndDateStepsProps) {
-
+  setDestination,
+  setEventStartAndEndDates,
+  eventStartAndEndDates
+}: DestinationAndDateStepProps) {
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
 
-    function openDatePicker() {
-      return setIsDatePickerOpen(true)
-    }
+  function openDatePicker() {
+    setIsDatePickerOpen(true);
+  }
 
-    function closeDatePicker() {
-      return setIsDatePickerOpen(false)
-    }
+  function closeDatePicker() {
+    setIsDatePickerOpen(false);
+  }
 
-  const displayedDate = eventStarAndEndDates && eventStarAndEndDates.from && eventStarAndEndDates.to
-  ? format(eventStarAndEndDates.from, "d 'de' LLL").concat(' até ').concat(format(eventStarAndEndDates.to, "d 'de' LLL"))
+  const displayedDate = eventStartAndEndDates && eventStartAndEndDates.from && eventStartAndEndDates.to 
+  ? format(eventStartAndEndDates.from, "d' de 'LLL").concat(' até ').concat(format(eventStartAndEndDates.to, "d' de 'LLL"))
   : null
 
   return (
@@ -44,21 +41,20 @@ export function DestinationAndDateSteps( {
       <div className="flex items-center gap-2 flex-1">
         <MapPin className="size-5 text-zinc-400" />
         <input
-          onChange={event => setDestination(event.target.value)} /*Conectando com a Backend*/   
           disabled={isGuestsInputOpen}
           type="text"
           placeholder="Para onde você vai?"
           className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+          onChange={event => setDestination(event.target.value)}
         />
       </div>
 
-      <button 
-          onClick={openDatePicker}
-          disabled={isGuestsInputOpen} 
-          className="flex items-center gap-2 text-left w-[240px]">
-          <Calendar className="size-5 text-zinc-400" />
-        <span className=" text-zinc-400 w-40 flex-1">
-          {displayedDate || 'Quando?'}
+      <button disabled={isGuestsInputOpen} onClick={openDatePicker} className="flex items-center gap-2 text-left w-[240px]">
+        <Calendar className="size-5 text-zinc-400" />
+        <span
+          className="text-lg text-zinc-400 w-40 flex-1"
+        >
+          {displayedDate || 'Quando'}
         </span>
       </button>
 
@@ -67,34 +63,31 @@ export function DestinationAndDateSteps( {
           <div className="rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <h2 className="font-lg font-semibold">Selecione a Data</h2>
+                <h2 className="font-lg font-semibold">Selecione a data</h2>
                 <button>
                   <X className="size-5 text-zinc-400" onClick={closeDatePicker} />
-                </button> 
+                </button>
               </div>
             </div>
-
-            <DayPicker mode="range" selected={eventStarAndEndDates} onSelect={setEventStartAndEndDates}/>
+            
+            <DayPicker mode="range" selected={eventStartAndEndDates} onSelect={setEventStartAndEndDates} />
           </div>
         </div>
       )}
 
-
       <div className="w-px h-6 bg-zinc-800" />
 
       {isGuestsInputOpen ? (
-        <Button onClick={closeGuestsInput} variant="secundary">
+        <Button onClick={closeGuestsInput} variant="secondary">
           Alterar local/data
-            <Settings2 className="size-5" />
+          <Settings2 className="size-5" />
         </Button>
       ) : (
-
-        <Button onClick={openGuestsInput} variant="primary" >
+        <Button onClick={openGuestsInput}>
           Continuar
-            <ArrowRight className="size-5" />
+          <ArrowRight className="size-5" />
         </Button>
       )}
-
-  </div>
+    </div>
   )
 }
